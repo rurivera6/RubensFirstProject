@@ -1,0 +1,187 @@
+Installed packages:
+C:\Program Files (x86)\nodejs
+C:\Program Files (x86)\Git
+C:\Program Files\Oracle\VirtualBox
+C:\HashiCorp\Vagrant
+C:\Downloads\Packer
+C:\Users\rurivera\.atom\packages\jshint\node_modules\.bin
+
+
+----------------------------- GIT ------------------------------------------------------
+RUN THIS IN MY GIT BASH SHELL: (when in Windows)
+git config --global core.autocrlf false
+
+COMMON USED INFORMATIONAL COMMANDS:
+git remote -v
+git remote rm ... (removes remote)
+git branch (displays branches)
+git status
+
+SET UP REMOTE CALLED ORIGIN:
+git clone "copy the URL from github" (sets up remote called origin - make sure you are in the directory you want)
+
+USED TO PULL DOWN CODE:
+git fetch upstream (upstream is the remote name)
+git checkout -b develop upstream/develop  (pulls down upstream/develop and makes it current branch)
+
+PULL DOWN CODE FROM RYAN's BRANCH:
+git remote add ryan git@github.com:ryedin/amp.git
+git remote -v (should see new remote)
+git fetch ryan (will pull down code
+git brach (should still only see two branches - develop and master)
+git checkout -b feature/authentication ryan/feature/authentication
+
+COMMIT CODE:
+git add .
+git commit -m "My comments"
+git push origin ... ( to push changes up to git on my branch)git
+
+DISCARD CHANGES:
+git checkout -f (to discard ALL changes)
+
+START A NEW BRANCH (THIS WILL BRANCH FROM develop):
+git flow feature start cms
+
+PUSH CODE UP TO YOUR OWN FORK in GIT.
+git push origin v3.4_mediacomm
+
+To merge into the main branch we need to go to github and generate a "pull request"
+
+----------------------------- VM ------------------------------------------------------
+When creating a new VM:
+https://github.com/npm/npm/issues/3565#issuecomment-47638097
+vagrant up
+ssh in (using putty)
+mkdir server_node_modules 
+mkdir client_node_modules
+cd /vagrant
+ln -sf ~/server_node_modules node_modules
+cd client
+ln -sf ~/client_node_modules node_modules
+
+NPM will install whatever is specified in a file named "package.json"
+Windows specific: (always include the --no-bin-links param)
+npm install --no-bin-links (in root and in client directories)
+npm install -g bower
+npm install --no-bin-links (in root and in client directories)
+npm --version
+
+bower is like npm but optimized for the front-end (i.e. angular, etc.)
+  the command will install everything specified in bower.json
+i.e. - bower install
+
+grunt will run the javascript specified in Gruntfile.js based on the parameter.
+i.e. - grunt build
+
+My Git repositories:
+C:\Appdev\Git
+
+Change to config.json will regenerate the 
+   config.json
+   datasources.json
+   middleware.json
+by doing "grunt run --env ryan"  (this starts up the server)
+
+
+-----------------------------------------------------------------------------------
+Debugging the server side:
+node-debug . env ryan
+node debug . env ryan
+
+
+-----------------------------------------------------------------------------------
+
+
+
+
+Linux (package manager) "apt-get"
+sudo apt-get install libpng-dev
+sudo apt-get install autoconf
+sudo apt-get install dos2unix
+
+
+
+Build my VM:
+packer build --only=ubuntu-14.04.2.node-sl-ng.amd64.virtualbox ubuntu-14.04.2-node-sl-ng.json
+ubuntu-14.04.2.node-sl-ng.amd64.virtualbox: Failed to send shutdown command: dial tcp 127.0.0.1:2988: ConnectEx tcp: No connection could be made because the target machine actively refused it.
+
+
+vagrant reload (will reload changes to VagrantFile)
+
+
+
+
+
+
+
+
+
+
+
+Ping a URL:
+curl -X PUT http://admin:password@localhost:5984/amp
+
+PROD and UAT boxes
+\\ncti-web1-uat\wwwroot$\ICSSWebServices
+\\ncti-web1-prod\wwwroot$\ICSSWebServices
+\\egl-web1-uat\wwwroot\ICSSWebServices
+\\egl-web1-prod\wwwroot\ICSSWebServices
+
+JEANI packages:
+/CM_REMOTE/build/NCTI/ICSS_SERVER/8.4.1/PKG
+
+Library viewer:
+NCTIViewer/jonsencti
+
+Seans account:  256650/05111969
+Adam Vlearbone:  202678/06281976
+Some account:  295649/12211982
+
+
+----------------------------------------------------------------------------------------
+http://localhost:15826/cfu?ssotoken=boba%3A15%3A1331253267000%3A8tMrotwnR0Sgnew%2BSByRrQ%3D%3D
+
+// My box.
+http://192.168.131.48/JTG.LogiCALL/cfu?ssotoken=boba%3A15%3A1331575826000%3AmsKj23p%2FKzROC4fT5T6fRQ%3D%3D
+http://localhost:15826/cfu?ssotoken=boba%3A15%3A1331312068000%3AVe2lIZlUMSe%2BEFxMAxWzyw%3D%3D
+http://localhost:15826/ExternalLanding.aspx?UserName=boba&CompanyId=42
+http://192.168.131.48/Logicall/ExternalLanding.aspx?UserName=boba&CompanyId=42
+
+http://logicall-qa1/ExternalLanding.aspx?UserName=externaluser&CompanyId=18
+----------------------------------------------------------------------------------------
+Insert into Security_Privilege (privilege_id, privilege_name, privilege_name_upper, privilege_desc, app_id, external_privilege, active_ind)
+VALUES ( 21, 'Merge Accounts', 'MERGE ACCOUNTS', 'Allows user to Merge Accounts in JEANI', 2, '21', 1);
+
+Insert into Security_Privilege (privilege_id, privilege_name, privilege_name_upper, privilege_desc, app_id, external_privilege, active_ind)
+VALUES ( 22, 'Bulk Student Transfer' , 'BULK STUDENT TRANSFER', 'Allows user to Transfer Students from one TC to another', 2, '22', 1);
+
+Insert into Sec_User_Privilege_Override (privilege_id, sec_user_id, app_id, sec_company_id, enable_ind)
+VALUES ( 21, 2, 2, 11, 1);
+Insert into Sec_User_Privilege_Override (privilege_id, sec_user_id, app_id, sec_company_id, enable_ind)
+VALUES ( 21, 2, 2, 3, 1);
+
+Insert into Sec_User_Privilege_Override (privilege_id, sec_user_id, app_id, sec_company_id, enable_ind)
+VALUES ( 22, 2, 2, 11, 1);
+Insert into Sec_User_Privilege_Override (privilege_id, sec_user_id, app_id, sec_company_id, enable_ind)
+VALUES ( 22, 2, 2, 3, 1);
+
+
+----------------------------------------------------------------------------------------
+select sid, serial#, status from v$session
+where machine='JONES\JTG-RRIVERA-7';
+
+SQL> alter system kill session '9,171';
+System altered
+
+OR
+
+SQL>alter system kill session '9,171' immediate;
+System altered.
+
+[SERVERERROR] ORA-01012: not logged on
+Process ID: 24268
+Session ID: 32 Serial number: 24754
+----------------------------------------------------------------------------------------
+
+export DISPLAY=192.168.134.42:0.0
+
