@@ -30,13 +30,13 @@ PULL DOWN CODE FROM RYAN's BRANCH:
 git remote add ryan git@github.com:ryedin/amp.git
 git remote -v (should see new remote)
 git fetch ryan (will pull down code
-git brach (should still only see two branches - develop and master)
+git branch (should still only see two branches - develop and master)
 git checkout -b feature/authentication ryan/feature/authentication
 
 COMMIT CODE:
 git add .
 git commit -m "My comments"
-git push origin ... ( to push changes up to git on my branch)git
+git push origin develop ( to push changes up to git on my branch)git
 
 DISCARD CHANGES:
 git checkout -f (to discard ALL changes)
